@@ -1,0 +1,22 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GawahChan/Indecision-App.git"
+  },
+  "author": "Gawah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GawahChan/Indecision-App/issues"
+  },
+  "homepage": "https://github.com/GawahChan/Indecision-App#readme",
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
