@@ -1,48 +1,90 @@
 'use strict';
 
-//arguments object - no longer bound with arrow functions
+console.log('App.js is running!');
 
-var add = function add(a, b) {
-    // console.log(arguments);
-    return a + b;
-};
-console.log(add(55, 1, 10001));
-
-//'this' keyword - no longer bound
-
-//ES5 function has to be used for printPlacesLived property
-//() => this only works by looking at the parent scope, so only function() will work for printPlacesLived property
-
-var user = {
-    name: 'Gawah',
-    cities: ['London', 'York', 'Dublin'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' has lived in ' + city)
-        // });
-    }
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 };
 
-console.log(user.printPlacesLived());
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options && app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'item two'
+        )
+    )
+);
 
-// Challenge area
+var count = 0;
+var addOne = function addOne() {
+    count++;
+    renderCounterApp();
+};
+var minusOne = function minusOne() {
+    count--;
+    renderCounterApp();
+};
+var resetCounter = function resetCounter() {
+    count = 0;
+    renderCounterApp();
+};
+var appRoot = document.getElementById('app');
 
-var multiplier = {
-    numbers: [1, 2, 5],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this2 = this;
+var renderCounterApp = function renderCounterApp() {
+    var templateTwo = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Count: ',
+            count
+        ),
+        React.createElement(
+            'button',
+            { onClick: addOne },
+            'Add by 1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: minusOne },
+            'minus One'
+        ),
+        React.createElement(
+            'button',
+            { onClick: resetCounter },
+            'reset counter'
+        )
+    );
 
-        return this.numbers.map(function (number) {
-            return _this2.multiplyBy * number;
-        });
-    }
+    ReactDOM.render(templateTwo, appRoot);
 };
 
-console.log(multiplier.multiply());
+renderCounterApp();
