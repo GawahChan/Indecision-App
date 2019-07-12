@@ -1,0 +1,25 @@
+//ES6 JavaScript Classes
+//Classes are a new way of writing constructor functions!
+
+//Creates a generate construct (generic function essentially)
+class Person {
+    constructor(name = 'Anonymous', age = 0) {
+        this.name = name;
+        this.age = age;
+    }
+    getGreeting() {
+        return `Hi, I am ${this.name}!`;
+    }
+
+getDescription() {
+    return `${this.name} is ${this.age} year(s) old`
+}
+}
+
+//Creates instances of the construct, Allows you to reuse Person() as many times as you want
+
+const me = new Person('Gawah Chan', 22);
+console.log(me.getDescription());
+
+const other = new Person();
+console.log(other.getDescription);
