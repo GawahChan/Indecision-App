@@ -8,7 +8,7 @@ class IndecisionApp extends React.Component {
                 <Header title={title} subtitle={subtitle} />
                 <Action />
                 <Options options={options} />
-                <AddOption />
+                <AddOption options={options}/>
             </div>
         );
     }
@@ -28,19 +28,27 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    handlePick() {
+       alert('handlePick'); 
+    }
     render() {
         return (
             <div>
-                <button>What should I do</button>
+                <button onClick={this.handlePick}>What should I do?</button>
             </div>
         );
     }
 }
 
 class Options extends React.Component {
+    handleRemoveAll() {
+        alert('Remove All')
+    }
+
     render() {
         return (
             <div>
+                <button onClick={this.handleRemoveAll}>Remove All</button>
                 {
                     this.props.options.map(option => <Option key={option} optionText={option}/>)
                 }
@@ -60,10 +68,27 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault(); //Prevents the default form submission process, and prevents full page refresh
+        const option = e.target.elements.option.value.trim();       
+       
+        //e.target gets the element that triggered the specific event.
+        //e.target.elements.option.value gets the value of the element called option (the input)
+        // .trim() method removes leading and trailing spaces
+
+
+        if (option) {
+            alert(option);
+        }
+    }
+    
     render() {
         return (
             <div>
-                <h1>AddOption component here</h1>
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="option" />
+                    <button>Add Option</button>
+                </form>
             </div>
         );
     }
