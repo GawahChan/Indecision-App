@@ -25,10 +25,18 @@ class Counter extends React.Component {
         });
     }
 
+
+    //Using setState as a function
+    //Prevents issues if you need to use setState twice!!!!
     handleReset() {
         this.setState(() => {
             return {
                 count: 0
+            }
+        });
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + 1
             }
         });
     }

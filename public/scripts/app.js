@@ -43,12 +43,21 @@ var Counter = function (_React$Component) {
                 };
             });
         }
+
+        //Using setState as a function
+        //Prevents issues if you need to use setState twice!!!!
+
     }, {
         key: 'handleReset',
         value: function handleReset() {
             this.setState(function () {
                 return {
                     count: 0
+                };
+            });
+            this.setState(function (prevState) {
+                return {
+                    count: prevState.count + 1
                 };
             });
         }
